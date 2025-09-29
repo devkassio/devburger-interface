@@ -17,15 +17,21 @@ import { Button } from '../../components/Button';
 export function Login() {
   const schema = yup
     .object({
-      email: yup.string().email().required(),
-      password: yup.string().min(6).required(),
+      email: yup
+        .string()
+        .email('Digite um email válido')
+        .required('O email é obrigatório'),
+      password: yup
+        .string()
+        .min(6, 'A senha deve ter no mínimo 6 caracteres')
+        .required('A senha é obrigatória'),
     })
     .required();
 
   const {
     register,
     handleSubmit,
-    // formState: { errors },
+    formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
   });
@@ -47,11 +53,13 @@ export function Login() {
           <InputContainer>
             <label>Email:</label>
             <input type="email" {...register('email')} />
+            <p>{errors?.email?.message}</p>
           </InputContainer>
 
           <InputContainer>
             <label>Senha:</label>
             <input type="password" {...register('password')} />
+            <p>{errors?.password?.message}</p>
           </InputContainer>
 
           <Button type="submit">Entrar</Button>
