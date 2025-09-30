@@ -1,5 +1,6 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import * as yup from 'yup';
 import { api } from '../../services/api';
@@ -10,6 +11,7 @@ import {
   Form,
   InputContainer,
   LeftContainer,
+  Link,
   RightContainer,
   Title,
 } from './styles';
@@ -17,6 +19,8 @@ import {
 import { Button } from '../../components/Button';
 
 export function Login() {
+  const navigate = useNavigate();
+
   const schema = yup
     .object({
       email: yup
@@ -46,7 +50,15 @@ export function Login() {
       }),
       {
         pending: 'Verificando suas credenciais...',
-        success: 'Bem-vindo! Login efetuado com sucesso.',
+        success: {
+          render() {
+            setTimeout(() => {
+              navigate('/');
+            }, 2000);
+
+            return 'Bem vindo, ao Dev Burguer!';
+          },
+        },
         error: 'Verifique seus dados e tente novamente.',
       },
     );
@@ -83,7 +95,7 @@ export function Login() {
         </Form>
 
         <p>
-          Não possui uma conta? <a>Cadastre-se</a>
+          Não possui uma conta? <Link to="/cadastro">Cadastre-se</Link>
         </p>
       </RightContainer>
     </Container>
