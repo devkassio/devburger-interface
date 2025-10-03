@@ -28,7 +28,3 @@ export const Container = styled.section`
     background-position: center;
     height: 100%;
 `;
-
-export const Content = styled.div`
-    padding-bottom: 70px;
-`;
