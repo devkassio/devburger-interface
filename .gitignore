@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# git commit -m "Sua mensagem aqui" --no-verify
+
+# git push
