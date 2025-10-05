@@ -1,10 +1,11 @@
 # 🍔 DevBurger Interface
 
-🚧 **Projeto em construção** 🚧  
+🚧 **Projeto em construção** 🚧
 
-Este repositório está em **desenvolvimento ativo** — novas funcionalidades, melhorias e ajustes no frontend estão sendo implementados diariamente.  
+Este repositório está em **desenvolvimento ativo** — novas funcionalidades,
+melhorias e ajustes no frontend estão sendo implementados diariamente.
 
-Acompanhe as atualizações constantes e fique de olho nas novidades!  
+Acompanhe as atualizações constantes e fique de olho nas novidades!
 
 ---
 
