@@ -75,3 +75,20 @@ export const ProductsContainer = styled.div`
   justify-content: center;
   margin: 50px auto;
 `;
+
+export const BackButton = styled.button`
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  background-color: #9758a6;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #6f3576;
+  }
+`;
