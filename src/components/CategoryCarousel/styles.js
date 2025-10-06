@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const Container = styled.div`
@@ -41,17 +42,28 @@ export const ContainerItems = styled.div`
   padding: 20px 10px;
   width: 100%;
   height: 250px;
+`;
 
-  p {
-    font-size: 20px;
-    background-color: rgba(0, 0, 0, 0.5);
-    border-radius: 30px;
-    padding: 10px 30px;
-    font-weight: 600;
-    margin-top: 120px;
-    color: #ffffff;
-    text-shadow:
-      0 2px 8px #9758a6,
-      0 1px 2px #000;
+export const CategoryButton = styled(Link)`
+  font-size: 18px;
+  text-decoration: none;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 30px;
+  padding: 10px 20px;
+  font-weight: 500;
+  margin-top: 120px;
+  color: #ffffff;
+  text-shadow:
+    0 2px 8px #9758a6,
+    0 1px 2px #000;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+    transition: background-color 0.3s;
+  }
+
+  &:active {
+    background-color: rgba(0, 0, 0, 0.9);
+    transition: background-color 0.1s;
   }
 `;
