@@ -10,6 +10,7 @@ export const Container = styled.div`
   background-color: #ffffff;
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.35);
   cursor: grab;
+  position: relative;
 
   div {
     width: 100%;
