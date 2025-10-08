@@ -23,6 +23,10 @@ dist-ssr
 *.sln
 *.sw?
 
-# git commit -m "Sua mensagem aqui" --no-verify
+# Arquivo de anotações pessoais
+dev-notes.md
+
+
+git commit -m "" --no-verify
 
 # git push

@@ -51,7 +51,7 @@ export function Header() {
             </div>
           </Profile>
           <LinkContainer>
-            <ShoppingCart color="#fff" size={24} />
+            <ShoppingCart color="#fff" size={24} /> {/* Mudar o icone*/}
             <HeaderLink to="/carrinho">Carrinho</HeaderLink>
           </LinkContainer>
           <Logout onClick={handleLogout}>Sair</Logout>
