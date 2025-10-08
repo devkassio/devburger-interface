@@ -32,11 +32,17 @@ export const Navigation = styled.nav`
     justify-content: center;
     gap: 20px;
   }
+
+  hr {
+    border: 0.5px solid #625e5e;
+    height: 20px;
+  }
 `;
 
 export const HeaderLink = styled(LinkRouter)`
   text-decoration: none;
-  color: #ffffff;
+  border-bottom: ${(props) => (props.$isActive ? '1px solid #9758a6' : 'none')};
+  color: ${(props) => (props.$isActive ? '#9758a6' : '#fff')};
   font-size: 16px;
   transition: color 200ms;
 
@@ -73,7 +79,8 @@ export const LinkContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 8px;
-  cursor: pointer;`;
+  cursor: pointer;
+`;
 
 export const Logout = styled.button`
   color: #ff3205;
