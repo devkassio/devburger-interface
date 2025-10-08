@@ -1,5 +1,5 @@
 import { ShoppingCart, User } from '@phosphor-icons/react';
-import { useNavigate, useResolvedPath } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom'; // useLocation para pegar a rota atual e setar o isActive, resolveu o problema. Ao inves de usar o useResolvedPath que não funcionou
 import { useUser } from '../../hooks/UserContext';
 
 import {
@@ -17,7 +17,7 @@ export function Header() {
   const navigate = useNavigate();
   const { logout, user } = useUser();
 
-  const path = useResolvedPath();
+  const path = useLocation().pathname;
 
   function handleLogout() {
     logout();
@@ -25,7 +25,6 @@ export function Header() {
   }
 
   console.log(user);
-  
 
   return (
     <Container>
@@ -33,6 +32,7 @@ export function Header() {
         <Navigation>
           <div>
             <HeaderLink to="/" $isActive={path === '/'}>
+              {/* reseolver pois não está funcionando, não está pegando o isActive */}
               Home
             </HeaderLink>
             <hr></hr>
@@ -48,13 +48,13 @@ export function Header() {
               <p>
                 Olá, <span>{useUser().user.name}</span>
               </p>
-              <Logout onClick={handleLogout}>Sair</Logout>
             </div>
           </Profile>
           <LinkContainer>
             <ShoppingCart color="#fff" size={24} />
             <HeaderLink to="/carrinho">Carrinho</HeaderLink>
           </LinkContainer>
+          <Logout onClick={handleLogout}>Sair</Logout>
         </Options>
       </Content>
     </Container>

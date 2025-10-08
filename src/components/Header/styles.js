@@ -5,8 +5,11 @@ import { Link as LinkRouter } from 'react-router-dom';
 export const Container = styled.div`
   background: #1f1f1f;
   width: 100%;
-  height: 60px;
-  padding: 0 56px;
+  height: 55px;
+  padding: 0 60px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
 `;
 
 export const Content = styled.div`
@@ -42,7 +45,7 @@ export const Navigation = styled.nav`
 export const HeaderLink = styled(LinkRouter)`
   text-decoration: none;
   border-bottom: ${(props) => (props.$isActive ? '1px solid #9758a6' : 'none')};
-  color: ${(props) => (props.$isActive ? '#9758a6' : '#fff')};
+  color: ${(props) => (props.$isActive ? '#9758a6' : '#fff')}; // resolver essa gambiarra
   font-size: 16px;
   transition: color 200ms;
 
@@ -55,7 +58,7 @@ export const Options = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 48px;
+  gap: 40px;
 `;
 
 export const Profile = styled.div`
@@ -70,6 +73,7 @@ export const Profile = styled.div`
     line-height: 90%;
   }
   span {
+    margin-left: 5px;
     font-weight: 600;
     color: #9758a6;
   }
@@ -88,4 +92,8 @@ export const Logout = styled.button`
   font-weight: 600;
   background-color: transparent;
   border: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
 `;
