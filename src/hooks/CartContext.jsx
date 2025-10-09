@@ -72,7 +72,7 @@ export const CartProvider = ({ children }) => {
     if (storagedCart) {
       setCart(JSON.parse(storagedCart));
     }
-  }, [cartProducts]);
+  }, []);
 
   return (
     <CartContext.Provider
