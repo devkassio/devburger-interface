@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 
 const CartContext = createContext({});
 
@@ -22,19 +22,57 @@ export const CartProvider = ({ children }) => {
 
       setCart(newProducts);
     }
+    updateLocalStorage(newProducts);
   };
 
-  /* useEffect(() => {
-    console.log(cartProducts);
-  }, [cartProducts]); */
+  const removeProductFromCart = (productId) => {
+    const newCart = cartProducts.filter((prd) => prd.id !== productId);
 
-  const removeProductFromCart = (product) => {};
+    setCart(newCart);
+    updateLocalStorage(newCart);
+  };
+
+  const updateLocalStorage = (produc) => {
+    localStorage.setItem('devburger:cart', JSON.stringify(produc));
+  };
 
   const clearCart = () => {};
 
-  const increaseProductQuantity = (productId) => {};
+  const increaseProductQuantity = (productId) => {
+    const newCart = cartProducts.map((prd) => {
+      return prd.id === productId
+        ? { ...prd, quantity: prd.quantity + 1 }
+        : { ...prd };
+    });
 
-  const decreaseProductQuantity = (productId) => {};
+    setCart(newCart);
+    updateLocalStorage(newCart);
+  };
+
+  const decreaseProductQuantity = (productId) => {
+    const cartIndex = cartProducts.findIndex((prd) => prd.id === productId);
+
+    if (cartProducts[cartIndex].quantity > 1) {
+      const newCart = cartProducts.map((prd) => {
+        return prd.id === productId
+          ? { ...prd, quantity: prd.quantity - 1 }
+          : { ...prd };
+      });
+
+      setCart(newCart);
+      updateLocalStorage(newCart);
+    } else {
+      removeProductFromCart(productId);
+    }
+  };
+
+  useEffect(() => {
+    const storagedCart = localStorage.getItem('devburger:cart');
+
+    if (storagedCart) {
+      setCart(JSON.parse(storagedCart));
+    }
+  }, [cartProducts]);
 
   return (
     <CartContext.Provider
