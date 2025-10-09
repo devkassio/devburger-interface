@@ -36,7 +36,10 @@ export const CartProvider = ({ children }) => {
     localStorage.setItem('devburger:cart', JSON.stringify(produc));
   };
 
-  const clearCart = () => {};
+  const clearCart = () => {
+    setCart([]);
+    updateLocalStorage([]);
+  };
 
   const increaseProductQuantity = (productId) => {
     const newCart = cartProducts.map((prd) => {
