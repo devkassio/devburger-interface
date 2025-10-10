@@ -5,13 +5,14 @@ import { formatPrice } from '../../utils/formatPrice';
 import { Table } from '../index';
 import {
   ButtonGroup,
+  CartTotalRow,
   EmptyCart,
   ProductImage,
   TotalPrice,
   TrashImage,
 } from './styles';
 
-export function CartItems() {
+export function CartItens() {
   const {
     cartProducts,
     increaseProductQuantity,
@@ -48,7 +49,7 @@ export function CartItems() {
       <Table.Header>
         <Table.Tr>
           <Table.Th></Table.Th>
-          <Table.Th>Items</Table.Th>
+          <Table.Th>Itens</Table.Th>
           <Table.Th>Preço</Table.Th>
           <Table.Th>Quantidade</Table.Th>
           <Table.Th>Total</Table.Th>
@@ -63,7 +64,7 @@ export function CartItems() {
                 <ProductImage src={product.url} alt={product.name} />
               </Table.Td>
               <Table.Td>{product.name}</Table.Td>
-              <Table.Td>{product.price}</Table.Td>
+              <Table.Td>{formatPrice(product.price)}</Table.Td>
               <Table.Td>
                 <ButtonGroup>
                   <button
@@ -72,7 +73,7 @@ export function CartItems() {
                   >
                     -
                   </button>
-                  {product.quantity}
+                  <span className="quantity">{product.quantity}</span>
                   <button
                     className="increase"
                     onClick={() => handleIncrease(product.id)}
@@ -105,17 +106,12 @@ export function CartItems() {
       </Table.Body>
       {/* Total geral da tabela */}
       {cartProducts.length > 0 && (
-        <Table.Tr>
-          <Table.Td
-            colSpan={4}
-            style={{ textAlign: 'right', fontWeight: 'bold' }}
-          >
-            Total do Carrinho:
-          </Table.Td>
+        <CartTotalRow>
+          <Table.Td colSpan={4}>Total do Carrinho:</Table.Td>
           <Table.Td>
             <TotalPrice>{formatPrice(totalCart)}</TotalPrice>
           </Table.Td>
-        </Table.Tr>
+        </CartTotalRow>
       )}
     </Table.Root>
   );

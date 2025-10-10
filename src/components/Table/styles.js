@@ -5,11 +5,18 @@ export const Root = styled.table`
   border-collapse: collapse;
   background-color: #fff;
   border-radius: 20px;
+  table-layout: fixed; /* impede quebra de linha */
 `;
 
 export const Header = styled.thead``;
 
-export const Tr = styled.tr``;
+export const Tr = styled.tr`
+  border-bottom: #cdcdcd 1px solid;
+
+  &:last-child {
+    border-bottom: none;
+  }
+`;
 
 export const Th = styled.th`
   padding: 16px;
@@ -32,6 +39,11 @@ export const Td = styled.td`
   color: #484848;
   font-weight: 500;
   line-height: 115%;
+
+  &:nth-child(1) { width: 100px; } /* imagem */
+  &:nth-child(2) { width: 240px; } /* nome */
+  &:nth-child(3) { width: 100px; } /* preço */
+  &:nth-child(4) { width: 140px; } /* quantidade */
 `;
 
 export const Body = styled.tbody``;

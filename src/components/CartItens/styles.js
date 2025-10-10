@@ -9,7 +9,7 @@ export const ProductImage = styled.img`
 export const ButtonGroup = styled.div`
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
 
   button {
     cursor: pointer;
@@ -24,6 +24,7 @@ export const ButtonGroup = styled.div`
     font-weight: bold;
     background-color: #9758a6;
     transition: background-color 0.3s ease;
+    flex-shrink: 0; /* impede quebra de linha */
   }
 
   button:hover {
@@ -37,6 +38,12 @@ export const ButtonGroup = styled.div`
 
   button.decrease:hover {
     background-color: #dc3545; /* vermelho */
+  }
+
+  .quantity {
+    display: inline-block;
+    width: 24px; /* fixa o espaço */
+    text-align: center;
   }
 `;
 
@@ -53,6 +60,14 @@ export const EmptyCart = styled.p`
   margin: 2rem 0;
   line-height: 1.5;
   letter-spacing: 0.5px;
+`;
+
+export const CartTotalRow = styled.tr`
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.125rem;
+  padding: 16px 0;
+  border-top: 2px solid #cdcdcd;
 `;
 
 export const TrashImage = styled.img`

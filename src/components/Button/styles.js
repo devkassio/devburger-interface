@@ -5,10 +5,10 @@ export const ContainerButton = styled.button`
   height: 52px;
   border: none;
   border-radius: 5px;
-  background-color: #9758a6;
+  background-color: #823894ff;
   color: #ffffff;
   font-family: 'Road Rage', sans-serif;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 30px;
   cursor: pointer;
 
