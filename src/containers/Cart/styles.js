@@ -4,12 +4,12 @@ import Texture from '../../assets/texture.svg';
 
 export const Container = styled.div`
   width: 100%;
-  min-height: 100%;
+  min-height: 100vh;
   background:
     linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)),
     url('${Background}');
   background-position: center;
-  height: 100vh;
+  height: 100%;
 `;
 
 export const Banner = styled.div`

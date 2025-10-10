@@ -1,7 +1,15 @@
+import { useEffect } from 'react';
 import { CategoryCarousel, OffersCarousel } from '../../components';
 import { Banner, Container } from './styles';
 
 export function Home() {
+  useEffect(() => {
+    sessionStorage.setItem(
+      'fromPage',
+      window.location.pathname + window.location.search,
+    );
+  }, []);
+
   return (
     <main>
       <Banner>
