@@ -157,3 +157,141 @@
     font-size: 12px;
   }
 }
+
+/* ============================= */
+/* ====== COMPLETE PAYMENT ====== */
+/* ============================= */
+
+/* Container geral (reaproveita o mesmo fundo e tipografia) */
+#payment-status {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #3c246a;
+  color: #ffffff;
+  padding: 48px 32px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  text-align: center;
+  animation: fadeIn 0.6s ease;
+}
+
+/* Ícone de status (verde, vermelho ou cinza, depende do JS inline) */
+#status-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  margin-bottom: 20px;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.15);
+}
+
+/* Texto de status */
+#status-text {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 16px;
+}
+
+/* Tabela de detalhes do pagamento */
+#details-table {
+  width: 100%;
+  max-width: 420px;
+  margin: 18px 0;
+  border-collapse: collapse;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+#details-table table {
+  width: 100%;
+}
+
+#details-table td {
+  padding: 10px 14px;
+  font-size: 14px;
+}
+
+.TableLabel {
+  text-transform: uppercase;
+  opacity: 0.8;
+  color: #bfbfbf;
+  width: 30%;
+  text-align: left;
+}
+
+.TableContent {
+  font-weight: 500;
+  color: #fff;
+  text-align: left;
+}
+
+/* Link para visualizar detalhes */
+#view-details {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: #fff;
+  font-size: 14px;
+  margin-top: 10px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+#view-details:hover {
+  color: #d3a5ff;
+  transform: translateY(-1px);
+}
+
+/* Botão de voltar/tentar novamente */
+#retry-button {
+  display: inline-block;
+  margin-top: 22px;
+  background: linear-gradient(90deg, #9758a6, #b17bcf);
+  color: #fff;
+  padding: 12px 22px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(151, 88, 166, 0.4);
+  transition: all 0.25s ease;
+}
+
+#retry-button:hover {
+  background: linear-gradient(90deg, #b17bcf, #c28de3);
+  transform: translateY(-2px);
+}
+
+/* Animação */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsividade */
+@media (max-width: 500px) {
+  #payment-status {
+    padding: 32px 20px;
+  }
+  #status-text {
+    font-size: 1.1rem;
+  }
+  #retry-button {
+    padding: 10px 18px;
+    font-size: 14px;
+  }
+}

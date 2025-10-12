@@ -75,7 +75,9 @@ export function CheckoutForm() {
         toast.error('⚙️ Falha no sistema! Tente novamente.');
       }
     } else {
-      toast.error('Sistema indisponivel! Tente novamente.');
+      navigate(
+        `/pedido-finalizado?payment_intent_client_secret=${paymentIntent.client_secret}`,
+      );
     }
 
     setIsLoading(false);
