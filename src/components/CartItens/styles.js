@@ -53,7 +53,7 @@ export const TotalPrice = styled.span`
 `;
 
 export const EmptyCart = styled.tr`
-  height: 400px; /* ajusta a altura da área vazia */
+  height: 250px; /* ajusta a altura da área vazia */
   text-align: center;
 
   td {
@@ -73,7 +73,7 @@ export const EmptyCart = styled.tr`
   }
 
   .icon {
-    font-size: 3rem;
+    font-size: 2rem;
     margin-bottom: 12px;
   }
 

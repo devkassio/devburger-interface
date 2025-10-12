@@ -5,14 +5,13 @@ import BannerHamburger from '../../assets/banner-hamburger.svg';
 
 export const Container = styled.div`
   width: 100%;
-  height: 100vh;
+  height: 100%;
   background-color: #f0f0f0;
 
   background:
     linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)),
     url('${Background}');
   background-position: center;
-  height: 100%;
 `;
 
 export const Banner = styled.div`
