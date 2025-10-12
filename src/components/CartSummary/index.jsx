@@ -26,8 +26,28 @@ export function CartSummary() {
     const products = cartProducts.map((product) => ({
       id: product.id,
       quantity: product.quantity,
+      price: product.price,
     }));
+
     try {
+      const {data} = await api.post('/create-payment-intent', { products });
+
+      navigate('/checkout', { state: { data } });
+    } catch (err) {
+      toast.error('Erro ao finalizar pedido!', {
+        position: 'top-right',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'light',
+        transition: Bounce,
+      });
+    }
+
+    /*   try {
       const { status } = await api.post(
         '/orders',
         { products },
@@ -49,8 +69,7 @@ export function CartSummary() {
       }
     } catch (error) {
       toast.error('⚙️ Falha no sistema! Tente novamente.');
-    }
-
+    } */
   };
 
   return (
