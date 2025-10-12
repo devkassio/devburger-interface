@@ -1,3 +1,3 @@
 export function CompletePayment() {
-    return <div>Checkout</div>;
+    return <div>Pagamento realizado com sucesso</div>;
 }

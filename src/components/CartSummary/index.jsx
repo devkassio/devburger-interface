@@ -30,9 +30,11 @@ export function CartSummary() {
     }));
 
     try {
-      const {data} = await api.post('/create-payment-intent', { products });
+      const response = await api.post('/create-payment-intent', { products });
 
-      navigate('/checkout', { state: { data } });
+      const { clientSecret, dpmCheckoutLink } = response.data;
+
+      navigate('/checkout', { state: { clientSecret, dpmCheckoutLink  } });
     } catch (err) {
       toast.error('Erro ao finalizar pedido!', {
         position: 'top-right',
@@ -47,29 +49,6 @@ export function CartSummary() {
       });
     }
 
-    /*   try {
-      const { status } = await api.post(
-        '/orders',
-        { products },
-        {
-          validateStatus: () => true,
-        },
-      );
-
-      if (status === 201 || status === 200) {
-        setTimeout(() => {
-          clearCart();
-          navigate('/');
-        }, 2000);
-        toast.success('Pedido realizado com sucesso!');
-      } else if (status === 400) {
-        toast.error('⚙️ Falha no sistema! Tente novamente.');
-      } else {
-        throw new Error();
-      }
-    } catch (error) {
-      toast.error('⚙️ Falha no sistema! Tente novamente.');
-    } */
   };
 
   return (

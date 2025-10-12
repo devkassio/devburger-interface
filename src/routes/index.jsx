@@ -40,7 +40,7 @@ export const router = createBrowserRouter([
     element: <Checkout />,
   },
   {
-    path: '/finalizar-pedido',
+    path: '/pedido-finalizado',
     element: <CompletePayment />,
   },
 ]);

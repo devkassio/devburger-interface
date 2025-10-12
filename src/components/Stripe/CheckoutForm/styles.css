@@ -1,0 +1,159 @@
+/* Container geral do checkout */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  width: 100vw;
+  background-color: #2a1a4a; /* roxo escuro de fundo */
+  font-family: 'Poppins', sans-serif;
+  color: #ffffff;
+  padding: 24px;
+}
+
+
+  .payment-title {
+  font-size: 1.8rem;
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  background: linear-gradient(90deg, #8a2be2, #b066ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
+/* Formulário de pagamento */
+#payment-form {
+  width: 100%;
+  max-width: 480px;
+  background: #3c246a; /* roxo médio */
+  padding: 36px 32px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+#payment-form:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.4);
+}
+
+/* Elemento do Stripe */
+#payment-element {
+  margin-bottom: 24px;
+}
+
+/* Botão de pagamento */
+#submit {
+  width: 100%;
+  padding: 14px 0;
+  border: none;
+  border-radius: 8px;
+  background-color: #9758a6; /* roxo “marca” */
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(151, 88, 166, 0.4);
+  transition: all 0.25s ease;
+}
+
+#submit:hover:not(:disabled) {
+  background-color: #b17bcf; /* tom roxo mais claro no hover */
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(151, 88, 166, 0.5);
+}
+
+#submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Texto dentro do botão */
+#button-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Spinner */
+.spinner {
+  width: 22px;
+  height: 22px;
+  border: 3px solid rgba(255, 255, 255, 0.2);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Mensagem de erro ou status */
+#payment-message {
+  margin-top: 16px;
+  text-align: center;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 12px;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+/* Bloco de informações adicionais */
+.checkout-info {
+  text-align: center;
+  font-size: 14px;
+  color: #e0e0e0;
+  margin-top: 24px;
+  max-width: 400px;
+  line-height: 1.5;
+}
+
+.checkout-info strong {
+  color: #9758a6;
+  font-weight: 500;
+}
+
+.checkout-info a {
+  display: inline-block;
+  margin-top: 8px;
+  color: #ffffff;
+  font-weight: 600;
+  text-decoration: underline;
+  transition: color 0.2s ease;
+}
+
+.checkout-info a:hover {
+  color: #b17bcf;
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+  #payment-form {
+    padding: 24px;
+  }
+  .checkout-info {
+    font-size: 13px;
+  }
+}
+
+/* Responsividade */
+@media (max-width: 400px) {
+  #payment-form {
+    padding: 16px;
+  }
+  .checkout-info {
+    font-size: 12px;
+  }
+}
