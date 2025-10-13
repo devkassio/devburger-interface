@@ -5,4 +5,7 @@ export * from './Menu';
 export * from './Cart';
 export * from './Checkout';
 export * from './CompletePayment';
-export * from './Admin';
+export * from './Admin/Orders';
+export * from './Admin/NewProduct';
+export * from './Admin/EditProduct';
+export * from './Admin/Products';
