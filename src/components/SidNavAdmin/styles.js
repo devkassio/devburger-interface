@@ -32,6 +32,7 @@ export const NavLink = styled(Link)`
   font-weight: 500;
   transition: background-color 0.3s ease, transform 0.2s ease;
   border-radius: 10px;
+  background-color: ${({ isActive }) => (isActive ? '#6f357c' : 'transparent')};
 
   span {
     font-size: 1rem;

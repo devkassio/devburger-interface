@@ -3,16 +3,18 @@ import Logo from '../../assets/Logo.svg';
 import { useUser } from '../../hooks/UserContext'
 import { navLinks } from './navLinks';
 import { Container, Footer, NavLink, NavLinkContainer } from './styles';
+import { useResolvedPath } from 'react-router-dom';
 
 export function SidNavAdmin() {
   const { logout } = useUser();
-
+  const {pathname} = useResolvedPath();
+  
   return (
     <Container>
       <img src={Logo} alt="Hamburguer Logo DevBurger " />
       <NavLinkContainer>
         {navLinks.map((navLink) => (
-          <NavLink key={navLink.id} to={navLink.path}>
+          <NavLink key={navLink.id} to={navLink.path} isActive={pathname === navLink.path}>
             {navLink.icon}
             <span>{navLink.label}</span>
           </NavLink>
