@@ -54,6 +54,21 @@ export function Orders() {
     setActive(status.id);
   }
 
+  useEffect(() => {
+    if (active === 0) {
+      setFilteredOrders(orders);
+    } else {
+      const statusIndex = orderStatusOptions.findIndex(
+        (option) => option.id === active,
+      );
+      const newFilteredOrders = orders.filter(
+        (order) => order.status === orderStatusOptions[statusIndex].value,
+      );
+
+      setFilteredOrders(newFilteredOrders);
+    }
+  }, [orders]);
+
   return (
     <>
       <Filter>

@@ -64,6 +64,7 @@ export function Row({ row, setOrders, orders }) {
             isLoading={loading}
             onChange={(status) => newStatusOrder(row.orderId, status.value)}
             styles={selectCustomStyles}
+            menuPortalTarget={document.body}
           />
         </TableCell>
       </TableRow>
