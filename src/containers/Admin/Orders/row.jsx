@@ -16,15 +16,24 @@ import { formatDate } from '../../../utils/formatDate';
 import { orderStatusOptions } from './orderStatus';
 import { ProductImage, selectCustomStyles, SelectStatus } from './styles';
 
-export function Row(props) {
-  const { row } = props;
+export function Row({ row, setOrders, orders }) {
   const [open, setOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   async function newStatusOrder(id, status) {
     try {
+      setLoading(true);
       await api.put(`/orders/${id}`, { status });
+
+      const newOrders = orders.map((order) =>
+        order._id === id ? { ...order, status } : order,
+      );
+
+      setOrders(newOrders);
     } catch (error) {
       console.error('Erro ao atualizar status:', error);
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -52,6 +61,7 @@ export function Row(props) {
             defaultValue={orderStatusOptions.find(
               (status) => status.value === row.status,
             )}
+            isLoading={loading}
             onChange={(status) => newStatusOrder(row.orderId, status.value)}
             styles={selectCustomStyles}
           />
@@ -97,6 +107,8 @@ export function Row(props) {
 }
 
 Row.propTypes = {
+  orders: PropTypes.array.isRequired,
+  setOrders: PropTypes.func.isRequired,
   row: PropTypes.shape({
     name: PropTypes.string.isRequired,
     orderId: PropTypes.string.isRequired,

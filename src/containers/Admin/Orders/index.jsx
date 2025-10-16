@@ -22,12 +22,6 @@ export function Orders() {
     loadOrders();
   }, []);
 
-  useEffect(() => {
-    const newRows = orders.map((order) => createData(order));
-
-    setRows(newRows);
-  }, [orders]);
-
   function createData(order) {
     return {
       name: order.user.name,
@@ -37,6 +31,12 @@ export function Orders() {
       products: order.products /* .length */,
     };
   }
+
+  useEffect(() => {
+    const newRows = orders.map((order) => createData(order));
+
+    setRows(newRows);
+  }, [orders]);
 
   return (
     <TableContainer component={Paper}>
@@ -52,7 +52,12 @@ export function Orders() {
         </TableHead>
         <TableBody>
           {rows.map((row) => (
-            <Row key={row.orderId} row={row} />
+            <Row
+              key={row.orderId}
+              row={row}
+              orders={orders}
+              setOrders={setOrders}
+            />
           ))}
         </TableBody>
       </Table>
