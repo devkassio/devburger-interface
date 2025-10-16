@@ -17,8 +17,6 @@ export const selectCustomStyles = {
     backgroundColor: '#fff',
     borderColor: '#ccc',
     boxShadow: 'none',
-
-
   }),
   option: (base, state) => ({
     ...base,
@@ -33,3 +31,21 @@ export const selectCustomStyles = {
     overflow: 'hidden',
   }),
 };
+
+export const FilterOptions = styled.button`
+  cursor: pointer;
+  background: none;
+  border: none;
+  border-bottom: ${(props) => (props.$isActiveStatus ? '2px solid #9758a6' : 'none')};
+  color: ${(props) => (props.$isActiveStatus ? '#9758a6' : '#484848')};
+  font-size: 14px;
+  line-height: 20px;
+  padding-bottom: 5px;
+`;
+
+export const Filter = styled.div`
+  display: flex;
+  justify-content: center;
+  margin: 28px 0;
+  gap: 50px;
+`;
