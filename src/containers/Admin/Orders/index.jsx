@@ -9,19 +9,15 @@ import { useEffect, useState } from 'react';
 import { api } from '../../../services/api';
 import { Row } from './row';
 
-
-
 export function Orders() {
   const [orders, setOrders] = useState([]);
   const [rows, setRows] = useState([]);
 
   useEffect(() => {
-  async  function loadOrders() {
-    const { data } = await api.get('/orders');
+    async function loadOrders() {
+      const { data } = await api.get('/orders');
 
-    setOrders(data);
-    console.log(data);
-    
+      setOrders(data);
     }
     loadOrders();
   }, []);
@@ -33,15 +29,14 @@ export function Orders() {
   }, [orders]);
 
   function createData(order) {
-  return {
-    name: order.user.name,
-    orderId: order._id,
-    data: order.createdAt,
-    status: order.status,
-    products: order.products/* .length */,
-    
-  };
-}
+    return {
+      name: order.user.name,
+      orderId: order._id,
+      data: order.createdAt,
+      status: order.status,
+      products: order.products /* .length */,
+    };
+  }
 
   return (
     <TableContainer component={Paper}>
