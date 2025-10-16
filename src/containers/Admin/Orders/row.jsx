@@ -11,10 +11,22 @@ import TableRow from '@mui/material/TableRow';
 import Typography from '@mui/material/Typography';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
+import { api } from '../../../services/api';
+import { formatDate } from '../../../utils/formatDate';
+import { orderStatusOptions } from './orderStatus';
+import { ProductImage, selectCustomStyles, SelectStatus } from './styles';
 
 export function Row(props) {
   const { row } = props;
   const [open, setOpen] = useState(false);
+
+  async function newStatusOrder(id, status) {
+    try {
+      await api.put(`/orders/${id}`, { status });
+    } catch (error) {
+      console.error('Erro ao atualizar status:', error);
+    }
+  }
 
   return (
     <>
@@ -32,8 +44,18 @@ export function Row(props) {
           {row.orderId}
         </TableCell>
         <TableCell>{row.name}</TableCell>
-        <TableCell>{row.date}</TableCell>
-        <TableCell>{row.status}</TableCell>
+        <TableCell>{formatDate(row.data)}</TableCell>
+        <TableCell>
+          <SelectStatus
+            options={orderStatusOptions.filter((status) => status.id !== 0)}
+            placeholder="Status do pedido"
+            defaultValue={orderStatusOptions.find(
+              (status) => status.value === row.status,
+            )}
+            onChange={(status) => newStatusOrder(row.orderId, status.value)}
+            styles={selectCustomStyles}
+          />
+        </TableCell>
       </TableRow>
       <TableRow>
         <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
@@ -48,19 +70,19 @@ export function Row(props) {
                     <TableCell>Quantidade</TableCell>
                     <TableCell>Produto</TableCell>
                     <TableCell>Categoria</TableCell>
-                    <TableCell></TableCell>
+                    <TableCell>Imagem do produto</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
                   {row.products.map((product) => (
                     <TableRow key={product.id}>
                       <TableCell component="th" scope="row">
-                        {product.id}
+                        {product.quantity}
                       </TableCell>
                       <TableCell>{product.name}</TableCell>
                       <TableCell>{product.category}</TableCell>
                       <TableCell>
-                        <img src={product.url} alt={product.name} />
+                        <ProductImage src={product.url} alt={product.name} />
                       </TableCell>
                     </TableRow>
                   ))}
