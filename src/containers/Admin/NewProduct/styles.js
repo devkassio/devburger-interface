@@ -9,7 +9,7 @@ export const Container = styled.div`
   /*  min-height: 100vh; */
   width: 100%;
   max-width: 600px;
-  margin: 50px auto;
+  margin: 32px auto;
   padding: 24px;
 `;
 
@@ -56,6 +56,10 @@ export const LabelUpload = styled.label`
   input[type='file'] {
     display: none;
   }
+
+  svg {
+    margin-right: 8px;
+  }
 `;
 
 export const Select = styled(ReactSelect)`
@@ -63,3 +67,11 @@ export const Select = styled(ReactSelect)`
 `;
 
 export const SubmitButton = styled(Button)``;
+
+export const ErrorMessage = styled.span`
+  color: #cf3057;
+  font-size: 12px;
+  line-height: 80%;
+  font-weight: 600;
+  height: 10px;
+`;
