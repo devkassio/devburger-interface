@@ -8,10 +8,6 @@ export function Checkout() {
     state: { clientSecret },
   } = useLocation();
 
-  console.log(clientSecret);
-  
-
-
   if (!clientSecret) {
     return (
       <div style={{ textAlign: 'center', marginTop: '50px', color: '#555' }}>
