@@ -17,7 +17,15 @@ createRoot(document.getElementById('root')).render(
         </BrowserRouter>
       </Elements>
       <GlobalStyle />
-      <ToastContainer autoClose={2000} theme="colored" />
+      <ToastContainer
+        theme="colored"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        pauseOnHover
+        draggable
+      />
     </AppProvider>
   </StrictMode>,
 );
