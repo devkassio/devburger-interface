@@ -75,3 +75,21 @@ export const ErrorMessage = styled.span`
   font-weight: 600;
   height: 10px;
 `;
+
+export const ContainerCheckbox = styled.div`
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  
+
+  label {
+    font-size: 14px;
+    color: #ddd;
+  }
+
+  input {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+  }
+`;

@@ -3,6 +3,7 @@ import { Image } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 import * as yup from 'yup';
 import { api } from '../../../services/api';
 import {
@@ -14,13 +15,15 @@ import {
   Label,
   LabelUpload,
   Select,
-  SubmitButton, // Corrigido: importar SubmitButton
+  SubmitButton,
+  ContainerCheckbox,
 } from './styles';
 
 const schema = yup.object({
   name: yup.string().required('O nome é obrigatório!'),
   price: yup.number().positive().required().typeError('O preço é obrigatório!'),
   category: yup.object().required('A categoria é obrigatória!'),
+  offer: yup.bool(),
   file: yup
     .mixed()
     .test('required', 'A imagem é obrigatória!', (value) => {
@@ -41,6 +44,8 @@ const schema = yup.object({
 export function NewProduct() {
   const [fileName, setFileName] = useState(null);
   const [categories, setCategories] = useState([]);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function loadCategories() {
@@ -66,6 +71,7 @@ export function NewProduct() {
     formData.append('price', data.price * 100);
     formData.append('category_id', data.category.id);
     formData.append('file', data.file[0]);
+    formData.append('offer', data.offer);
 
     await toast.promise(
       api.post('/products', formData, {
@@ -79,6 +85,9 @@ export function NewProduct() {
         error: '⚙️ Falha ao criar o produto! Tente novamente.',
       },
     );
+    setTimeout(() => {
+      navigate('/admin/produtos');
+    }, 2000);
   };
 
   return (
@@ -132,6 +141,11 @@ export function NewProduct() {
             />
             <ErrorMessage>{errors?.category?.message}</ErrorMessage>
           </InputGroup>
+
+          <ContainerCheckbox>
+            <input type="checkbox" {...register('offer')} />
+            <label>Produto em oferta ?</label>
+          </ContainerCheckbox>
 
           <SubmitButton type="submit">Cadastrar produto</SubmitButton>
         </Form>

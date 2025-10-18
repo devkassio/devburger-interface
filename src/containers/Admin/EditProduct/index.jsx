@@ -2,7 +2,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { Image } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import * as yup from 'yup';
 import { api } from '../../../services/api';
@@ -15,33 +15,22 @@ import {
   Label,
   LabelUpload,
   Select,
-  SubmitButton, // Corrigido: importar SubmitButton
+  SubmitButton,
+  ContainerCheckbox,
 } from './styles';
 
 const schema = yup.object({
   name: yup.string().required('O nome é obrigatório!'),
   price: yup.number().positive().required().typeError('O preço é obrigatório!'),
+  offer: yup.bool(),
   category: yup.object().required('A categoria é obrigatória!'),
-  file: yup
-    .mixed()
-    .test('required', 'A imagem é obrigatória!', (value) => {
-      return value && value.length > 0;
-    })
-    .test('fileSize', 'A imagem deve ter no máximo 5MB', (value) => {
-      return value && value.length > 0 && value[0].size <= 5 * 1024 * 1024;
-    })
-    .test('type', 'A imagem deve ser PNG ou JPEG', (value) => {
-      return (
-        value &&
-        value.length > 0 &&
-        (value[0].type === 'image/png' || value[0].type === 'image/jpeg')
-      );
-    }),
 });
 
 export function EditProduct() {
   const [fileName, setFileName] = useState(null);
   const [categories, setCategories] = useState([]);
+
+  const navigate = useNavigate();
 
   const {
     state: { product },
@@ -71,19 +60,23 @@ export function EditProduct() {
     formData.append('price', data.price * 100);
     formData.append('category_id', data.category.id);
     formData.append('file', data.file[0]);
+    formData.append('offer', data.offer);
 
     await toast.promise(
-      api.post('/products', formData, {
+      api.put(`/products/${product.id}`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
       }),
       {
-        pending: 'Criando o produto...',
-        success: 'Produto criado com sucesso!',
-        error: '⚙️ Falha ao criar o produto! Tente novamente.',
+        pending: 'Editando o produto...',
+        success: 'Produto editado com sucesso!',
+        error: '⚙️ Falha ao editar o produto! Tente novamente.',
       },
     );
+    setTimeout(() => {
+      navigate('/admin/produtos');
+    }, 2000);
   };
 
   return (
@@ -102,7 +95,11 @@ export function EditProduct() {
 
           <InputGroup>
             <Label>Preço</Label>
-            <Input type="number" {...register('price')} defaultValue={product.price / 100} />
+            <Input
+              type="number"
+              {...register('price')}
+              defaultValue={product.price / 100}
+            />
             <ErrorMessage>{errors?.price?.message}</ErrorMessage>
           </InputGroup>
 
@@ -128,6 +125,7 @@ export function EditProduct() {
             <Controller
               name="category"
               control={control}
+              defaultValue={product.category}
               render={({ field }) => (
                 <Select
                   {...field}
@@ -136,13 +134,21 @@ export function EditProduct() {
                   getOptionValue={(categories) => categories.id}
                   placeholder="Escolha a categoria"
                   mmenuPortalTarget={document.body}
+                  defaultValue={product.category}
                 />
               )}
             />
             <ErrorMessage>{errors?.category?.message}</ErrorMessage>
           </InputGroup>
 
-          <SubmitButton type="submit">Cadastrar produto</SubmitButton>
+          <InputGroup>
+            <ContainerCheckbox>
+              <input type="checkbox" defaultChecked={product.offer} {...register('offer')} />
+              <Label>Produto em oferta ?</Label>
+            </ContainerCheckbox>
+          </InputGroup>
+
+          <SubmitButton type="submit">Editar produto</SubmitButton>
         </Form>
       </Container>
     </div>
