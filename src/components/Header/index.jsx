@@ -32,7 +32,6 @@ export function Header() {
         <Navigation>
           <div>
             <HeaderLink to="/" $isActive={path === '/'}>
-              {/* reseolver pois não está funcionando, não está pegando o isActive */}
               Home
             </HeaderLink>
             <hr></hr>

@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-
 import { Link as LinkRouter } from 'react-router-dom';
 
 export const Container = styled.div`
@@ -16,7 +15,6 @@ export const Content = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   max-width: 1280px;
   width: 100%;
   margin: 0 auto;
@@ -45,7 +43,7 @@ export const Navigation = styled.nav`
 export const HeaderLink = styled(LinkRouter)`
   text-decoration: none;
   border-bottom: ${(props) => (props.$isActive ? '1px solid #9758a6' : 'none')};
-  color: ${(props) => (props.$isActive ? '#9758a6' : '#fff')}; // resolver essa gambiarra
+  color: ${(props) => (props.$isActive ? '#9758a6' : '#fff')};
   font-size: 16px;
   transition: color 200ms;
 

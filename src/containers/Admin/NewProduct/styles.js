@@ -9,7 +9,7 @@ export const Container = styled.div`
   /*  min-height: 100vh; */
   width: 100%;
   max-width: 600px;
-  margin: 32px auto;
+  margin: auto;
   padding: 24px;
 `;
 
