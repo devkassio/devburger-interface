@@ -46,7 +46,7 @@ export function Header() {
             <User color="#fff" size={24} />
             <div>
               <p>
-                Olá, <span>{useUser().user.name}</span>
+                Olá, <span onClick={() => navigate('/admin/pedidos')}>{user?.name}</span>
               </p>
             </div>
           </Profile>

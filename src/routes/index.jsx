@@ -11,6 +11,7 @@ import {
   Orders,
   Products,
   Register,
+  DeleteProduct,
 } from '../containers/';
 import { AdminLayout } from '../layouts/AdminLayout';
 import { UserLayout } from '../layouts/UserLayout';
@@ -31,6 +32,7 @@ export function Router() {
         <Route path="/admin/novo-produto" element={<NewProduct />} />
         <Route path="/admin/editar-produto" element={<EditProduct />} />
         <Route path="/admin/produtos" element={<Products />} />
+        <Route path="/admin/excluir-produto" element={<DeleteProduct />} />
       </Route>
 
       <Route path="/login" element={<Login />} />
@@ -39,44 +41,3 @@ export function Router() {
   );
 }
 
-/* export const router = createBrowserRouter([
-  {
-    path: '/login',
-    element: <Login />,
-  },
-  {
-    path: '/cadastro',
-    element: <Register />,
-  },
-  {
-    path: '/',
-    element: (
-      <>
-        <Header />
-        <Home />
-        <Footer />
-      </>
-    ),
-  },
-  {
-    path: '/cardapio',
-    element: (
-      <>
-        <Header />
-        <Menu />
-      </>
-    ),
-  },
-  {
-    path: '/carrinho',
-    element: <Cart />,
-  },
-  {
-    path: '/checkout',
-    element: <Checkout />,
-  },
-  {
-    path: '/pedido-finalizado',
-    element: <CompletePayment />,
-  },
-]); */

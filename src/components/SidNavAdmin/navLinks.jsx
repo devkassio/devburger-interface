@@ -1,4 +1,4 @@
-import { List, ListPlus, ReceiptText as Receipt } from 'lucide-react';
+import { List, ListPlus, ReceiptText as Receipt, Trash2 } from 'lucide-react';
 
 export const navLinks = [
   {
@@ -18,5 +18,11 @@ export const navLinks = [
     label: 'Adicionar Produto',
     path: '/admin/novo-produto',
     icon: <ListPlus />,
+  },
+  {
+    id: 4,
+    label: 'Excluir Produto',
+    path: '/admin/excluir-produto',
+    icon: <Trash2 />,
   },
 ];

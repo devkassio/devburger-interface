@@ -71,6 +71,7 @@ export const Profile = styled.div`
     color: #fff;
     font-weight: 300;
     line-height: 90%;
+    cursor: pointer;
   }
   span {
     margin-left: 5px;
